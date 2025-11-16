@@ -46,6 +46,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cypress run --config-file=cypress.config.js
+      - name: List video files
+        if: always()
+        run: ls -la cypress/videos || echo "No videos directory found"
       - uses: actions/upload-artifact@v4.6.2
         if: always()
         with:
